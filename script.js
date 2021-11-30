@@ -33,8 +33,8 @@ pantalones.push(new Producto("Short Notte", 9, 1000, "Negro", 10));
 //primero tomo control sobre la section previamente creada en el HTML
 let sectionProductos = document.getElementById("section-productos");
 
-//hago un bucle por cada array para crear la escructura HTML de cada card 
-for (const remera of remeras) {
+//creo la funcion para crear el codigo HTML de las cards
+function crearCard (producto) {
     //primero creo el div contenedor para cada card y aplico estilos de bootstrap
     let card = document.createElement("div");
     card.setAttribute("class", "card card-producto");
@@ -43,45 +43,26 @@ for (const remera of remeras) {
     sectionProductos.appendChild(card);
     //creo divs que contengan las imagenes de los productos y se los asigno como hijos a las cards
     let cardImg = document.createElement("div");
-    cardImg.innerHTML = `<img src="./media/${remera.id}.jpg" class="card-img-top" alt="${remera.nombre}"></img>`;
+    cardImg.innerHTML = `<img src="./media/${producto.id}.jpg" class="card-img-top" alt="${producto.nombre}"></img>`;
     card.appendChild(cardImg);
     //creo divs que contengan los nombres de los productos y los botones, despues se los asigno como hijos a las cards
     let cardBody = document.createElement("div");
-    cardBody.innerHTML = `<h5 class="card-title">${remera.nombre}</h5>
-                            <p class="card-text"> Precio: $${remera.precio} </p>
+    cardBody.innerHTML = `<h5 class="card-title">${producto.nombre}</h5>
+                            <p class="card-text"> Precio: $${producto.precio} </p>
                             <button class="btn btn-dark">Comprar</button>`;
-    cardBody.setAttribute("class", "card-body");
     card.appendChild(cardBody);
+    cardBody.setAttribute("class", "card-body");
+}
+
+//recorro los arrays de productos para crear las cards con la funcion crearCard
+for (const remera of remeras) {
+   crearCard(remera);
 }
 
 for (const pantalon of pantalones) {
-    let card = document.createElement("div");
-    card.setAttribute("class", "card card-producto");
-    card.style.width = "18rem";
-    sectionProductos.appendChild(card);
-    let cardImg = document.createElement("div");
-    cardImg.innerHTML = `<img src="./media/${pantalon.id}.jpg" class="card-img-top" alt="${pantalon.nombre}"></img>`;
-    card.appendChild(cardImg);
-    let cardBody = document.createElement("div");
-    cardBody.innerHTML = `<h5 class="card-title">${pantalon.nombre}</h5>
-                            <p class="card-text"> Precio: $${pantalon.precio} </p>
-                            <button class="btn btn-dark">Comprar</button>`;
-    card.appendChild(cardBody);
-    cardBody.setAttribute("class", "card-body");
+    crearCard(pantalon);
 }
 
 for (const buzo of buzos) {
-    let card = document.createElement("div");
-    card.setAttribute("class", "card card-producto");
-    card.style.width = "18rem";
-    sectionProductos.appendChild(card);
-    let cardImg = document.createElement("div");
-    cardImg.innerHTML = `<img src="./media/${buzo.id}.jpg" class="card-img-top" alt="${buzo.nombre}"></img>`;
-    card.appendChild(cardImg);
-    let cardBody = document.createElement("div");
-    cardBody.innerHTML = `<h5 class="card-title">${buzo.nombre}</h5>
-                            <p class="card-text"> Precio: $${buzo.precio} </p>
-                            <button class="btn btn-dark">Comprar</button>`;
-    card.appendChild(cardBody);
-    cardBody.setAttribute("class", "card-body");
+    crearCard(buzo);
 }
