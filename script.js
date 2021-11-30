@@ -1,6 +1,6 @@
 //Creo la clase de objeto producto como base para cargar los productos 
 class Producto {
-    constructor(nombre, id, precio, color, stock) {
+    constructor(nombre, id, precio, color, stock, ) {
         this.nombre = nombre;
         this.id = id;
         this.precio = precio;
@@ -48,7 +48,8 @@ for (const remera of remeras) {
     //creo divs que contengan los nombres de los productos y los botones, despues se los asigno como hijos a las cards
     let cardBody = document.createElement("div");
     cardBody.innerHTML = `<h5 class="card-title">${remera.nombre}</h5>
-                            <a href="#" class="btn btn-dark">Comprar</a>`;
+                            <p class="card-text"> Precio: $${remera.precio} </p>
+                            <button class="btn btn-dark">Comprar</button>`;
     cardBody.setAttribute("class", "card-body");
     card.appendChild(cardBody);
 }
@@ -63,7 +64,8 @@ for (const pantalon of pantalones) {
     card.appendChild(cardImg);
     let cardBody = document.createElement("div");
     cardBody.innerHTML = `<h5 class="card-title">${pantalon.nombre}</h5>
-                            <a href="#" class="btn btn-dark">Comprar</a>`;
+                            <p class="card-text"> Precio: $${pantalon.precio} </p>
+                            <button class="btn btn-dark">Comprar</button>`;
     card.appendChild(cardBody);
     cardBody.setAttribute("class", "card-body");
 }
@@ -78,7 +80,8 @@ for (const buzo of buzos) {
     card.appendChild(cardImg);
     let cardBody = document.createElement("div");
     cardBody.innerHTML = `<h5 class="card-title">${buzo.nombre}</h5>
-                            <a href="#" class="btn btn-dark">Comprar</a>`;
+                            <p class="card-text"> Precio: $${buzo.precio} </p>
+                            <button class="btn btn-dark">Comprar</button>`;
     card.appendChild(cardBody);
     cardBody.setAttribute("class", "card-body");
 }
